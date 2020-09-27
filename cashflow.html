@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+					<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+					<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                    <script type='text/javascript' src='https://happy.live/wp-content/themes/happy-live-new/js/numeral-1.5.3.min.js?ver=4.7.18'></script>
+                    <style>
+					.card-text{
+						font-size:14px;
+					}
+					.align-center{
+						margin-top: auto;
+						margin-bottom: auto;
+					}
+                    </style>
+                    </head>
+					<body>
+                        <script>
+                            $(".calc-field").on("keyup change", function() {
+                                calcEPS();
+                            });
+                            function calcEPS() {
+                            var epsCurr = replaceNonDigitsToFloat(document.getElementById("now-eps").value), epsInit = replaceNonDigitsToFloat(document.getElementById("old-eps").value), epsAge = replaceNonDigitsToFloat(document.getElementById("year").value);
+                            var r = Math.pow(numeral(epsCurr) / numeral(epsInit), numeral(1 / epsAge)) - 1;
+                            var result = numeral(r * 100).format("0,0") + "%";
+                            $(".calc-result").text(result);
+                            }
+                            
+var replaceNonDigitsToFloat = function(theString) {
+  var newString = theString.toString().replace(/\$|,/g, "");
+  return parseFloat(newString);
+};
+                        </script>
+                        
+						<div class="container-fluid bg-dark text-white align-center">
+                            <div class="card bg-dark">
+                                <div class="card-body">
+                                  <div class="row">
+                                    <div class="col-md-auto">
+                                      <a type="button" href="index.html" class="btn btn-primary btn-sm">Back</a>
+                                    </div>
+                                    <div class="col">
+                                      <h4>OPERATING CASH FLOW RATE</h4>
+                                    </div>
+                                  </div>
+                                  
+                                  <p class="card-text">Tốc độ tăng trưởng Dòng tiền hoạt động – Operating Cash Flow rate là 1 chỉ số tăng trưởng dài hạn của luồng tiền hoạt động của doanh nghiệp. Nó cho thấy luồng tiền thật của doanh nghiệp vận động ra sao. Chỉ số Operating Cash Flow cũng khác rất nhiều so với tăng trưởng của EPS (thu nhập trên mỗi cổ phần) vì EPS thì có thể làm hạch toán theo lý thuyết (EPS = doanh thu thuần – tổng các chi phí rồi đem chia cho số lượng cổ phần) còn Operating Cash Flow rate, chỉ số tăng trưởng của dòng tiền hoạt động, cho thấy sự tăng trưởng của luồng tiền mặt thực sự cần cho hoạt động của doanh nghiệp thực tế.
+
+                                    Việc xác định được chỉ số tăng trưởng của Luồng tiền mặt hoạt động Operating Cash Flow này sẽ giúp chúng ta xác định rõ doanh nghiệp chúng ta định đầu tư vào có phải là doanh nghiệp tuyệt vời hay không.
+                                    
+                                    Khi tính toán chỉ số này, rất quan trọng là bạn hãy điền những con số chính xác, tương tự như cách tính của các chỉ số trước: Bạn hãy điền vào con số “Dòng tiền hoạt động quá khứ”, “Dòng tiền hoạt động hiện tại” và “Số năm” để tính toán.</p>
+                                  <div class="row">
+                                    <div class="col">
+                                        <label for="now-eps">Dòng Tiền Hoạt Động Hiện Tại:</label>
+                                        <input class="form-control" onkeyup="calcEPS()" value="145021000" id="now-eps">
+                                    </div>
+                                    <div class="col">
+                                        <label for="old-eps">Dòng Tiền Hoạt Động Quá Khứ:</label>
+                                        <input class="form-control" onkeyup="calcEPS()" value="3420000" id="old-eps">
+                                    </div>
+                                    <div class="col">
+                                        <label for="year">Số Năm:</label>
+                                        <input class="form-control" onkeyup="calcEPS()" value="8" id="year">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="card bg-dark">
+                                <div class="card-body">
+                                    <div>
+                                       <h2 class="text-center"><small>Tỉ lệ tăng trưởng: </small><span class="calc-result">60%</span></h2>
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="card bg-dark">
+                                <div class="card-body">
+                                    <p class="card-text">Hãy sử dụng công cụ nghiên cứu này theo sự tiện lợi của bạn. Nếu được thì bạn nên tìm kiếm và truy xuất dữ liệu của doanh nghiệp khoảng 10 năm. Trong báo cáo tài chính, phần báo cáo lưu chuyển tiền tệ hợp nhất, hãy tìm con số “Lưu chuyển tiền thuần từ hoạt động kinh doanh” – Cash from operating Activities để điền vô công thức tính tốc độ tăng trưởng của dòng tiền hoạt động.</p>
+                                  
+                                </div>
+                              </div>
+                              </div>
+					</body>
+				</html>

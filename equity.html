@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+					<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+					<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                    <script type='text/javascript' src='https://happy.live/wp-content/themes/happy-live-new/js/numeral-1.5.3.min.js?ver=4.7.18'></script>
+                    <style>
+					.card-text{
+						font-size:14px;
+					}
+					.align-center{
+						margin-top: auto;
+						margin-bottom: auto;
+					}
+                    </style>
+                    </head>
+					<body>
+                        <script>
+                            $(".calc-field").on("keyup change", function() {
+                                calcEPS();
+                            });
+                            function calcEPS() {
+                            var epsCurr = replaceNonDigitsToFloat(document.getElementById("now-eps").value), epsInit = replaceNonDigitsToFloat(document.getElementById("old-eps").value), epsAge = replaceNonDigitsToFloat(document.getElementById("year").value);
+                            var r = Math.pow(numeral(epsCurr) / numeral(epsInit), numeral(1 / epsAge)) - 1;
+                            var result = numeral(r * 100).format("0,0") + "%";
+                            $(".calc-result").text(result);
+                            }
+                            
+var replaceNonDigitsToFloat = function(theString) {
+  var newString = theString.toString().replace(/\$|,/g, "");
+  return parseFloat(newString);
+};
+                        </script>
+                        
+						<div class="container-fluid bg-dark text-white align-center">
+                            <div class="card bg-dark">
+                                <div class="card-body">
+                                  <div class="row">
+                                    <div class="col-md-auto">
+                                      <a type="button" href="index.html" class="btn btn-primary btn-sm">Back</a>
+                                    </div>
+                                    <div class="col">
+                                      <h4>EQUITY GROWTH RATE</h4>
+                                    </div>
+                                  </div>
+                                  
+                                  <p class="card-text">Tốc độ tăng trưởng vốn cổ phần, Equity Growth Rate, là chỉ số tăng trưởng vốn cổ phần của doanh nghiệp. Thực sự, một doanh nghiệp tuyệt vời là một doanh nghiệp có chỉ số Equity Growth Rate này tăng trưởng vững chắc qua các năm. Tốc độ tăng trưởng vốn cổ phần là 1 trong 5 chỉ số lớn, rất quan trọng để xác định 1 doanh nghiệp là doanh nghiệp tuyệt vời để đầu tư hay không.</p>
+                                  <div class="row">
+                                    <div class="col">
+                                        <label for="now-eps">Vốn Cổ Phần Hiện Tại:</label>
+                                        <input class="form-control" onkeyup="calcEPS()" value="108957000" id="now-eps">
+                                    </div>
+                                    <div class="col">
+                                        <label for="old-eps">Vốn Cổ Phần Quá Khứ:</label>
+                                        <input class="form-control" onkeyup="calcEPS()" value="2805000" id="old-eps">
+                                    </div>
+                                    <div class="col">
+                                        <label for="year">Số Năm:</label>
+                                        <input class="form-control" onkeyup="calcEPS()" value="8" id="year">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="card bg-dark">
+                                <div class="card-body">
+                                    <div>
+                                       <h2 class="text-center"><small>Tỉ lệ tăng trưởng: </small><span class="calc-result">58%</span></h2>
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="card bg-dark">
+                                <div class="card-body">
+                                    <p class="card-text">Hãy sử dụng công cụ nghiên cứu này theo sự tiện lợi của bạn. Nếu được thì bạn nên tìm kiếm và truy xuất dữ liệu của doanh nghiệp khoảng 10 năm. Hãy điền vào ô “Vốn cổ phần quá khứ” con số Equity trong quá khứ mà bạn tìm được. Sau đó điền vào ô “Vốn cổ phần hiện tại” con số Equity của năm gần nhất. Tiếp theo, trong ô “Số năm” hãy điền số năm giữa 2 kì tính Equity quá khứ và Equity hiện tại (thí dụ, nếu con số vốn cổ phần Equity quá khứ mà bạn điền vô là con số 10 năm trước đây và con số Equity mà bạn điền vô ô “Vốn cổ phần hiện tại” là năm nay, thì tổng thời gian giữa 2 kì tính Equity này là 9 năm – và con số bạn điền vào ô “số năm” là 9)
+                                        Nếu bạn sử dụng những con số quá lớn thí dụ như: 5,555,000,000 bạn có thể lược bớt các số 0 đằng sau của tất cả các con số Equity bạn điền vào 2 ô “Vốn cổ phần quá khứ” và “Vốn cổ phần hiện tại”.</p>
+                                  
+                                </div>
+                              </div>
+                              </div>
+					</body>
+				</html>
